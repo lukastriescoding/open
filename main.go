@@ -7,8 +7,8 @@ import (
 	"fmt"
 	"os"
 
-	"git.schonelu.de/lukas/open/cmd"
-	"git.schonelu.de/lukas/open/db"
+	"github.com/lukastriescoding/open/cmd"
+	"github.com/lukastriescoding/open/db"
 
 	_ "github.com/mattn/go-sqlite3"
 )

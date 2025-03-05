@@ -8,8 +8,8 @@ import (
 	"os"
 	"os/exec"
 
-	"git.schonelu.de/lukas/open/db"
-	"git.schonelu.de/lukas/open/models"
+	"github.com/lukastriescoding/open/db"
+	"github.com/lukastriescoding/open/models"
 	"github.com/spf13/cobra"
 )
 

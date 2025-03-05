@@ -5,7 +5,7 @@ import (
 	"os"
 	"os/exec"
 
-	"git.schonelu.de/lukas/open/db"
+	"github.com/lukastriescoding/open/db"
 	"github.com/spf13/cobra"
 )
 

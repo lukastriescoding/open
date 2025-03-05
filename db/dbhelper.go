@@ -7,7 +7,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"git.schonelu.de/lukas/open/models"
+	"github.com/lukastriescoding/open/models"
 	"github.com/mattn/go-sqlite3"
 )
 

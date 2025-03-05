@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"git.schonelu.de/lukas/open/db"
+	"github.com/lukastriescoding/open/db"
 	"github.com/spf13/cobra"
 )
 

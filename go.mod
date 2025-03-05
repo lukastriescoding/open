@@ -1,4 +1,4 @@
-module git.schonelu.de/lukas/open
+module github.com/lukastriescoding/open
 
 go 1.23.3
 
