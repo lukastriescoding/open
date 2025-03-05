@@ -8,8 +8,12 @@ build:
 	@mkdir -p $(BIN_DIR)
 	go build -o $(BIN_PATH)
 
-build-windows
+build-windows:
 	CGO_ENABLED=1 CC=x86_64-w64-mingw32-gcc GOOS=windows GOARCH=amd64 go build -o open.exe
+	cp ./open.exe /mnt/d/Stuffus/skript/open.exe
+
+build-darwin:
+	CGO_ENABLED=1 CC=o64-clang CXX=o64-clang++ GOOS=darwin GOARCH=amd64 go build -o myprogram_darwin_amd64
 
 open: build
 	@$(BIN_PATH)

@@ -201,14 +201,16 @@ func SetMainApp(name string) error {
 }
 
 func GetMainApp() (models.Application, error) {
-	// TODO
 	var name string
 	var app models.Application
 	err := conn.QueryRow("SELECT name FROM main_app").Scan(&name)
 	if err != nil {
 		return models.Application{}, err
 	}
-
+	app, err = GetApp(name)
+	if err != nil {
+		return models.Application{}, err
+	}
 	return app, nil
 }
 

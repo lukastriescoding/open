@@ -64,8 +64,8 @@ var rootCmd = &cobra.Command{
 			}
 		}
 
-		command := exec.Command(app.Path + " " + dir.Path)
-		err := command.Start()
+		command := exec.Command(app.Path, dir.Path)
+		err := command.Run()
 		if err != nil {
 			fmt.Println(err)
 			os.Exit(1)
