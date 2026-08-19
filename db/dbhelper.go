@@ -63,7 +63,8 @@ func GetDir(name string) (models.Directory, error) {
 	if err != nil {
 		if errors.Is(err, sql.ErrNoRows) {
 			// Handle the case where no rows were found
-			return models.Directory{}, errors.New("directory not found") // or a custom error if needed
+			return models.Directory{}, fmt.Errorf("directory %q not found", name)
+
 		}
 		return models.Directory{}, err
 	}
@@ -113,7 +114,7 @@ func RemoveDir(name string) error {
 		return err
 	}
 	if rows == 0 {
-		return errors.New("directory with name \"" + name + "\" not found")
+		return fmt.Errorf("directory %q not found", name)
 	}
 	return err
 }
@@ -148,7 +149,7 @@ func GetApp(name string) (models.Application, error) {
 	if err != nil {
 		if errors.Is(err, sql.ErrNoRows) {
 			// Handle the case where no rows were found
-			return models.Application{}, errors.New("application not found") // or a custom error if needed
+			return models.Application{}, fmt.Errorf("application %q not found", name)
 		}
 		return models.Application{}, err
 	}
@@ -183,7 +184,7 @@ func RemoveApp(name string) error {
 		return err
 	}
 	if rows == 0 {
-		return errors.New("application with name \"" + name + "\" not found")
+		return fmt.Errorf("application %q not found", name)
 	}
 	return err
 }

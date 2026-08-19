@@ -10,6 +10,7 @@ import (
 
 	"github.com/lukastriescoding/open/db"
 	"github.com/lukastriescoding/open/models"
+	"github.com/lukastriescoding/open/utils"
 	"github.com/spf13/cobra"
 )
 
@@ -24,10 +25,20 @@ var rootCmd = &cobra.Command{
 		var dir models.Directory
 		if len(args) == 1 {
 			var err error
-			dir, err = db.GetDir(args[0])
-			if err != nil {
-				fmt.Println(err)
-				os.Exit(1)
+			if args[0] == "." {
+				var dotPath string
+				dotPath, err = utils.GetAbsolutePath(args[0])
+				if err != nil {
+					fmt.Println(err)
+					os.Exit(1)
+				}
+				dir = models.Directory{Path: dotPath, Name: "temp"}
+			} else {
+				dir, err = db.GetDir(args[0])
+				if err != nil {
+					fmt.Println(err)
+					os.Exit(1)
+				}
 			}
 			appSet := false
 			if dir.MainApp.Valid && dir.MainApp.String != "" {
@@ -57,10 +68,20 @@ var rootCmd = &cobra.Command{
 				fmt.Println(err)
 				os.Exit(1)
 			}
-			dir, err = db.GetDir(args[1])
-			if err != nil {
-				fmt.Println(err)
-				os.Exit(1)
+			if args[1] == "." {
+				var dotPath string
+				dotPath, err = utils.GetAbsolutePath(args[1])
+				if err != nil {
+					fmt.Println(err)
+					os.Exit(1)
+				}
+				dir = models.Directory{Path: dotPath, Name: "temp"}
+			} else {
+				dir, err = db.GetDir(args[1])
+				if err != nil {
+					fmt.Println(err)
+					os.Exit(1)
+				}
 			}
 		}
 
